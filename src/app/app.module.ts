@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
 import { routing } from './app.routes';
 import { AppComponent } from './app.component'
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { AuthGuard } from './guards/auth.guard'
 import { AuthenticationService } from './services/authentication.service'
@@ -15,6 +16,9 @@ import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.co
 import { HttpModule } from '@angular/http';
 
 import 'rxjs/add/operator/map'
+import { LoginService } from './services/login.service';
+import { StorageService } from './services/storage.service';
+import { HttpClientService } from './services/http-client.service';
 
 @NgModule({
   declarations: [
@@ -30,12 +34,16 @@ import 'rxjs/add/operator/map'
     HttpModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     routing
   ],
   providers: [
     AuthenticationService,
     AuthGuard,
-    EventEmitterService
+    EventEmitterService,
+    LoginService,
+    StorageService,
+    HttpClientService
   ],
   bootstrap: [AppComponent]
 })

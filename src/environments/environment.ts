@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  URL_BASE : "www.google.com.br"
+  URL_BASE : "www.google.com.br",
+  API_URL: 'http://localhost:3000/v1'
 };
 
 /*
