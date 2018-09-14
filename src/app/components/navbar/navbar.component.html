@@ -15,6 +15,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav"  *ngIf="islogin">
         <li><a style="cursor:pointer;"(click)='notification()'>Notification</a></li>
+        <li><a style="cursor:pointer;"(click)='chat()'>Chat</a></li>
         <li><a style="cursor:pointer;"(click)="loginRedirect()">Sair</a></li>
       </ul>
       <ul class="nav navbar-nav"  *ngIf="!islogin">

@@ -1,3 +1,52 @@
-<div>
-    Pagina de notificação
+<div *ngIf="!renderizeNotification">
+    <h2>Tela de Notificação</h2>
+    <div class="row">
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <img src="../../../assets/imgs/imgcapa.jpg" alt="...">
+                <div class="caption">
+                    <h3>Aulas de Sabado</h3>
+                    <p>Novas Aulas chegando...</p>
+                    <p><a class="btn btn-primary" (click)="openNotification()" role="button">Abrir</a> <a class="btn btn-default"
+                            role="button">Marcar como lida</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <img src="../../../assets/imgs/imgcapa.jpg" alt="...">
+                <div class="caption">
+                    <h3>Limpezas do banheiro</h3>
+                    <p>Ajude na Limpeza</p>
+                    <p><a class="btn btn-primary" role="button">Abrir</a> <a class="btn btn-default"
+                            role="button">Marcar como lida</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <img src="../../../assets/imgs/imgcapa.jpg" alt="...">
+                <div class="caption">
+                    <h3>Adiciona o pessoal no facebook</h3>
+                    <p>Vamos todos nos conectar galera...</p>
+                    <p><a class="btn btn-primary" role="button">Abrir</a> <a class="btn btn-default"
+                            role="button">Marcar como lida</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <img src="../../../assets/imgs/imgcapa.jpg" alt="...">
+                <div class="caption">
+                    <h3>Novo professor na area</h3>
+                    <p>Um novo professor focado em body para voces...</p>
+                    <p><a class="btn btn-primary" role="button">Abrir</a> <a class="btn btn-default"
+                            role="button">Marcar como lida</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="renderizeNotification">
+        <app-open-notification></app-open-notification>
 </div>
