@@ -1,3 +1,18 @@
-<div>
-Fazer login
+<div class="row">
+    <div class="col-md-offset-3 col-md-6">
+        <h5 style="text-align: center">Realizar Login</h5>
+        <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+            <div class="form-group">
+                <input type="email" [formControl]="email" class="form-control" name="inputEmail3" [(ngModel)]="user.email" name="email" id="signin-email" placeholder="E-mail"
+                    autocomplete="off">
+            </div>
+            <div class="form-group">
+                <input [formControl]="password" type="password" class="form-control"  name="inputPassword3" [(ngModel)]="user.password" name="password" id="signin-password" placeholder="Senha"
+                    autocomplete="off">
+            </div>
+            <button type="submit" class="btn btn-info btn-block">Login</button>
+            <br>
+            <br>
+        </form>
+    </div>
 </div>

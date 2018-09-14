@@ -6,7 +6,7 @@ import { AppComponent } from './app.component'
 import { AuthGuard } from './guards/auth.guard'
 import { AuthenticationService } from './services/authentication.service'
 import { EventEmitterService } from './services/eventemiter.service'
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component'
 import { NavbarModule } from './components/navbar/navbar.module'
 import { FooterComponent } from './components/footer/footer.component'
@@ -28,6 +28,8 @@ import 'rxjs/add/operator/map'
     BrowserModule,
     NavbarModule,
     HttpModule,
+    FormsModule,
+    ReactiveFormsModule,
     routing
   ],
   providers: [
