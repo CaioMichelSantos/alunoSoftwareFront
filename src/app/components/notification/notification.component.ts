@@ -6,13 +6,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotificationComponent implements OnInit {
 
+  renderizeNotification = false;
+
   constructor(
     
   ) {
   }
+  
 
   ngOnInit() {
 
+  }
+  openNotification(){
+    this.renderizeNotification = true 
   }
 
 }
