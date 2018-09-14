@@ -29,19 +29,17 @@ export class NavbarComponent implements OnInit {
   }
 
   loginRedirect() {
-    if(this.router.url.slice(6, 11) == 'login'){
-      return
-    }
     this.authenticationService.logout()
     this.islogin = false;
-    if (this.router.url.slice(1, 5) != 'scls') {
-      this.router.navigate(['scls/login' + this.router.url]);
-      return
-    }
-    this.router.navigate(['scls/login/' + this.router.url.slice(6, this.router.url.length)]);
+    this.router.navigate(['/login' + this.router.url]);
+      
+    
   }
 
   notification() {
-    this.router.navigate(['/scls/mytransactions']);
+    this.router.navigate(['/notification']);
+  }
+  chat() {
+    this.router.navigate(['/chat']);
   }
 }

@@ -13,6 +13,7 @@ import { FooterComponent } from './components/footer/footer.component'
 import { NotificationComponent } from './components/notification/notification.component'
 import {  OpenNotificationComponent } from './components/notification/openNotification/open-notification.component'
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component'
+import { ChatComponent } from './components/chat/chat.component'
 import { HttpModule } from '@angular/http';
 
 import 'rxjs/add/operator/map'
@@ -24,6 +25,7 @@ import 'rxjs/add/operator/map'
     FooterComponent,
     NotificationComponent,
     OpenNotificationComponent,
+    ChatComponent,
     PagenotfoundComponent
   ],
   imports: [
