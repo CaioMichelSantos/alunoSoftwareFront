@@ -1,11 +1,9 @@
-import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthenticationService } from '../../services/authentication.service';
-import { EventEmitterService } from "../../services/eventemiter.service";
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { StorageService } from '../../services/storage.service';
 import { LoginService } from '../../services/login.service';
-
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'app-login',
@@ -18,9 +16,7 @@ import { LoginService } from '../../services/login.service';
 })
 
 export class LoginComponent implements OnInit {
-
-
-    //Variavel para login antigo
+    submitted: Boolean = false;
     user = {
         email: null,
         password: null
@@ -29,18 +25,13 @@ export class LoginComponent implements OnInit {
     public email: AbstractControl;
     public password: AbstractControl;
 
-    // loginEmailForm: FormGroup;
-    // loginPasswordForm: FormGroup;
-
     constructor(
         fb: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
-        private authenticationService: AuthenticationService,
-        private eventEmitterService: EventEmitterService,
         private storageService: StorageService,
-        private loginService: LoginService
-        // private formBuilder: FormBuilder,
+        private loginService: LoginService,
+        private toastr: ToastrService
     ) {
         this.form = fb.group({
             'email': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
@@ -50,57 +41,28 @@ export class LoginComponent implements OnInit {
         this.password = this.form.controls['password'];
     }
 
-    ngOnInit() {
-
-
-    }
-
-    // public onSubmit(values: Object): void {
-    //     if (this.form.invalid) {
-    //         return
-    //     }
-    //     localStorage.setItem('currentUser', 'teste');
-    //     // this.toastr.success('Sucesso', 'Login realizado com sucesso');
-    //     console.log('Entrou')
-    //     this.router.navigate(['/notification']);
-
-    //     //So terminar
-    //     // this.authenticationService.login(this.user.email, this.user.password)
-    //     //   .subscribe(
-    //     //     data => {
-    //     //       this.toastr.success('Sucesso', 'Login realizado com sucesso');
-    //     //       this.router.navigate(['/pages/dashboard']);
-    //     //     },
-    //     //     error => {
-    //     //       this.toastr.error('Error', 'Falha ao realizar Login');
-    //     //       console.log(error)
-    //     //     });
-
-    // }
+    ngOnInit() { }
 
     public async onSubmit(values: Object) {
         try {
-            // this.submitted = true;
             if (this.form.invalid) {
-                // this.toastr.error('Erro', 'Verifique os campos e tente novamente');
+                this.toastr.error('Ooops', 'Verifique os campos e tente novamente');
                 return
             };
+            if (this.submitted) { return; }
+
+            this.submitted = true;
 
             const data: any = await this.loginService.login(this.user);
-
             this.storageService.set('token', data.token);
             this.storageService.set('user', data.user);
-
-            //   this.toastr.success('Sucesso', 'Login realizado com sucesso');
-            //   this.router.navigateByUrl('/pages/dashboard');
+            this.toastr.success('Sucesso', 'Login realizado com sucesso');
             this.router.navigate(['/notification']);
         } catch (err) {
-            console.log(err);
-            // this.toastr.error('Error', 'Não foi possível realizar o login');
+            this.toastr.error('Ooops', 'Não foi possível realizar o login');
+        } finally {
+            this.submitted = false;
         }
     }
-
-
-
 }
 
