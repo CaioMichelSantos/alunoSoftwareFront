@@ -20,6 +20,7 @@ import { HttpModule } from '@angular/http';
 import 'rxjs/add/operator/map'
 import { StorageService } from './services/storage.service';
 import { HttpClientService } from './services/http-client.service';
+import { YoutubePlayerModule } from 'ng2-youtube-player';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { HttpClientService } from './services/http-client.service';
     ReactiveFormsModule,
     HttpClientModule,
     routing,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    YoutubePlayerModule
   ],
   providers: [
     AuthGuard,
