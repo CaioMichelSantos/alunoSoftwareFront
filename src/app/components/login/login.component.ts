@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
     public async onSubmit(values: Object) {
         try {
             if (this.form.invalid) {
-                this.toastr.error('Ooops', 'Verifique os campos e tente novamente');
+                this.toastr.error('Verifique os campos e tente novamente', 'Ooops');
                 return
             };
             if (this.submitted) { return; }
@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
             const data: any = await this.loginService.login(this.user);
             this.storageService.set('token', data.token);
             this.storageService.set('user', data.user);
-            this.toastr.success('Sucesso', 'Login realizado com sucesso');
+            this.toastr.success('Login realizado com sucesso', 'Sucesso');
             this.router.navigate(['/notification']);
         } catch (err) {
             this.toastr.error('Ooops', 'Não foi possível realizar o login');
