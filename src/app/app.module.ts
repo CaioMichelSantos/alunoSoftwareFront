@@ -17,9 +17,7 @@ import { OpenNotificationComponent } from './components/notification/openNotific
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component'
 import { ChatComponent } from './components/chat/chat.component'
 import { HttpModule } from '@angular/http';
-
 import 'rxjs/add/operator/map'
-import { LoginService } from './services/login.service';
 import { StorageService } from './services/storage.service';
 import { HttpClientService } from './services/http-client.service';
 
@@ -35,7 +33,6 @@ import { HttpClientService } from './services/http-client.service';
   ],
   imports: [
     ToastrModule.forRoot({
-      timeOut: 10000,
       preventDuplicates: true,
     }),
     BrowserModule,
@@ -48,10 +45,9 @@ import { HttpClientService } from './services/http-client.service';
     BrowserAnimationsModule
   ],
   providers: [
-    AuthenticationService,
     AuthGuard,
     EventEmitterService,
-    LoginService,
+    AuthenticationService,
     StorageService,
     HttpClientService
   ],

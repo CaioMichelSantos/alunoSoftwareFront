@@ -1,36 +1,28 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
-
 import { environment } from '../../environments/environment';
-
+import { HttpClient } from '@angular/common/http';
+import { StorageService } from './storage.service';
 
 @Injectable()
 export class AuthenticationService {
-    constructor(private http: Http) { 
+    constructor(private http: HttpClient, private storageService: StorageService) { }
+
+    public login(data = {}) {
+        return this.http.post(`${environment.API_URL}/users/login`, data).toPromise()
     }
 
-    login(email, password) {
-        return this.http.post(`${environment.URL_BASE}/app/users/login`, { email: email, password: password })
-            .map((response: Response) => {
-                // login successful if there's a jwt token in the response
-                let user = response.json();
-                if (user && user.token) {
-                    // store user details and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentUser', JSON.stringify(user));
-                }
-            });
+    loginAccountKit(objRegister) {
+        return this.http.post(`${environment.URL_BASE}/app/users/login-account-kit`, objRegister).map((response: Response) => response.json());
     }
-    loginAccountKit(objRegister){
-        return  this.http.post(`${environment.URL_BASE}/app/users/login-account-kit`, objRegister).map((response: Response) =>response.json());
-     }
 
     logout() {
-        // remove user from local storage to log user out
-        localStorage.removeItem('currentUser');
+        this.storageService.set('user', null);
+        this.storageService.set('token', null);
     }
 
     getLogged() {
-        let logged = JSON.parse(localStorage.getItem('currentUser'))
+        let logged = JSON.parse(this.storageService.get('user'));
         return logged;
     }
 }

@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { StorageService } from '../../services/storage.service';
-import { LoginService } from '../../services/login.service';
 import { ToastrService } from 'ngx-toastr';
+import { EventEmitterService } from '../../services/eventemiter.service';
+import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
     selector: 'app-login',
@@ -30,7 +31,7 @@ export class LoginComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private storageService: StorageService,
-        private loginService: LoginService,
+        private authenticationService: AuthenticationService,
         private toastr: ToastrService
     ) {
         this.form = fb.group({
@@ -53,10 +54,11 @@ export class LoginComponent implements OnInit {
 
             this.submitted = true;
 
-            const data: any = await this.loginService.login(this.user);
+            const data: any = await this.authenticationService.login(this.user);
             this.storageService.set('token', data.token);
             this.storageService.set('user', data.user);
             this.toastr.success('Login realizado com sucesso', 'Sucesso');
+            EventEmitterService.get('user-logged').emit('');
             this.router.navigate(['/notification']);
         } catch (err) {
             this.toastr.error('Ooops', 'Não foi possível realizar o login');
