@@ -5,12 +5,28 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './open-notification.component.html'
 })
 export class OpenNotificationComponent implements OnInit {
+  id = 'qDuKsiwS5xw';
+  private player;
+  private ytEvent;
 
-  constructor(
-    
-  ) {
+
+  constructor() {
+  
   }
-
+  onStateChange(event) {
+    this.ytEvent = event.data;
+  }
+  savePlayer(player) {
+    this.player = player;
+  }
+  
+  playVideo() {
+    this.player.playVideo();
+  }
+  
+  pauseVideo() {
+    this.player.pauseVideo();
+  }
   ngOnInit() {
 
   }

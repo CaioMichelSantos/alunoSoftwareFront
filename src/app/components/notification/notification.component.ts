@@ -17,8 +17,11 @@ export class NotificationComponent implements OnInit {
   ngOnInit() {
 
   }
-  openNotification(){
+  openNotification(id){
     this.renderizeNotification = true 
+  }
+  backNotification(){
+    this.renderizeNotification = false
   }
 
 }
