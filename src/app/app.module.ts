@@ -1,3 +1,4 @@
+import { environment } from '../environments/environment';
 import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -22,6 +23,9 @@ import { StorageService } from './services/storage.service';
 import { HttpClientService } from './services/http-client.service';
 import { YoutubePlayerModule } from 'ng2-youtube-player';
 
+import { ServiceWorkerModule } from '@angular/service-worker';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +48,8 @@ import { YoutubePlayerModule } from 'ng2-youtube-player';
     HttpClientModule,
     routing,
     BrowserAnimationsModule,
-    YoutubePlayerModule
+    YoutubePlayerModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     AuthGuard,

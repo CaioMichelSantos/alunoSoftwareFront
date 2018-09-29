@@ -12,10 +12,6 @@ export class AuthenticationService {
         return this.http.post(`${environment.API_URL}/users/login`, data).toPromise()
     }
 
-    loginAccountKit(objRegister) {
-        return this.http.post(`${environment.URL_BASE}/app/users/login-account-kit`, objRegister).map((response: Response) => response.json());
-    }
-
     logout() {
         this.storageService.set('user', null);
         this.storageService.set('token', null);
