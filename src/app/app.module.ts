@@ -24,6 +24,7 @@ import { HttpClientService } from './services/http-client.service';
 import { YoutubePlayerModule } from 'ng2-youtube-player';
 
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { EvaluationsComponent } from './components/evaluations/evaluations.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     NotificationComponent,
     OpenNotificationComponent,
     ChatComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    EvaluationsComponent
   ],
   imports: [
     ToastrModule.forRoot({

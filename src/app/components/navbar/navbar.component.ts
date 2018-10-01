@@ -5,7 +5,8 @@ import { EventEmitterService } from "../../services/eventemiter.service";
 
 @Component({
   selector: 'app-navbar',
-  templateUrl: './navbar.component.html'
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
   islogin: boolean;
@@ -37,4 +38,9 @@ export class NavbarComponent implements OnInit {
   chat() {
     this.router.navigate(['/chat']);
   }
+
+  evaluations() {
+    this.router.navigate(['/evaluations']);
+  }
+
 }

@@ -1,3 +1,5 @@
+
+
 <nav class="navbar navbar-default" style="margin-bottom: 0px" >
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -16,8 +18,13 @@
       <ul class="nav navbar-nav"  *ngIf="islogin">
         <li><a style="cursor:pointer;"(click)='notification()'>Notification</a></li>
         <li><a style="cursor:pointer;"(click)='chat()'>Chat</a></li>
-        <li><a style="cursor:pointer;"(click)="loginRedirect()">Sair</a></li>
+        <li><a style="cursor:pointer;"(click)='evaluations()'>Avaliações</a></li>
       </ul>
+      <div class="btn-sair">
+        <button type="button" style="cursor:pointer;"(click)="loginRedirect()" class="btn btn-danger">
+          Sair
+        </button>
+      </div>  
       <ul class="nav navbar-nav"  *ngIf="!islogin">
         <li><a style="cursor:pointer;" (click)="loginRedirect()">Login</a></li>
       </ul>
