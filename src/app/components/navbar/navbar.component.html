@@ -16,17 +16,19 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav"  *ngIf="islogin">
-        <li><a style="cursor:pointer;"(click)='notification()'>Notification</a></li>
-        <li><a style="cursor:pointer;"(click)='chat()'>Chat</a></li>
-        <li><a style="cursor:pointer;"(click)='evaluations()'>Avaliações</a></li>
+        <li><a style="cursor:pointer;"(click)='notification()'>Notificações</a></li>
+        <li><a style="cursor:pointer;"(click)='chat()'>Mensageiro</a></li>
+        <li><a style="cursor:pointer;"(click)='evaluations()'>Avaliações fisicas</a></li>
+        <li><a style="cursor:pointer;">Registro de alimentação</a></li>
+        <li><a style="cursor:pointer;">Relatorio de evoluções</a></li>
       </ul>
       <div class="btn-sair">
-        <button type="button" style="cursor:pointer;"(click)="loginRedirect()" class="btn btn-danger">
+        <button type="button" *ngIf="islogin" style="cursor:pointer;"(click)="loginRedirect()" class="btn btn-danger">
           Sair
         </button>
       </div>  
       <ul class="nav navbar-nav"  *ngIf="!islogin">
-        <li><a style="cursor:pointer;" (click)="loginRedirect()">Login</a></li>
+        <li><a style="cursor:pointer;" (click)="loginRedirect()">Entrar</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
