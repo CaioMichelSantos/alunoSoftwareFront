@@ -22,6 +22,7 @@ import 'rxjs/add/operator/map'
 import { StorageService } from './services/storage.service';
 import { HttpClientService } from './services/http-client.service';
 import { YoutubePlayerModule } from 'ng2-youtube-player';
+import { ClassComponent } from './components/class/class.component'
 
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { EvaluationsComponent } from './components/evaluations/evaluations.component';
@@ -36,7 +37,8 @@ import { EvaluationsComponent } from './components/evaluations/evaluations.compo
     OpenNotificationComponent,
     ChatComponent,
     PagenotfoundComponent,
-    EvaluationsComponent
+    EvaluationsComponent,
+    ClassComponent
   ],
   imports: [
     ToastrModule.forRoot({
