@@ -6,9 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./class.component.scss']
 })
 export class ClassComponent implements OnInit {
-  constructor() {}
+  newAulaControl: boolean
 
-  ngOnInit() {}
+  constructor() { }
 
+  ngOnInit() { }
+
+
+  oldClass() {
+    this.newAulaControl = true
+  }
+  newClass() {
+    this.newAulaControl = false
+  }
 
 }
