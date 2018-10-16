@@ -23,7 +23,6 @@ import { StorageService } from './services/storage.service';
 import { HttpClientService } from './services/http-client.service';
 import { YoutubePlayerModule } from 'ng2-youtube-player';
 import { ClassComponent } from './components/class/class.component'
-import { EditClassComponent } from './components/class/editClass/edit-class.component'
 
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { EvaluationsComponent } from './components/evaluations/evaluations.component';
@@ -40,7 +39,6 @@ import { EvaluationsComponent } from './components/evaluations/evaluations.compo
     PagenotfoundComponent,
     EvaluationsComponent,
     ClassComponent,
-    EditClassComponent
   ],
   imports: [
     ToastrModule.forRoot({
