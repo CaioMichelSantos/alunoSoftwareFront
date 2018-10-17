@@ -1,6 +1,10 @@
 <div class="row">
     <div class="col-md-offset-3 col-md-6 login-content">
-        <h5>Acesso a Plataforma</h5>
+        <div align="center">
+            <h3>Acesso a Plataforma</h3>
+            <img src="../../../assets/imgs/academia.jpeg" width="40%" height="40%" alt="...">
+        </div>
+        <br>
         <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
             <div class="form-group">
                 <input type="email" [formControl]="email" class="form-control" name="inputEmail3" [(ngModel)]="user.email" name="email" id="signin-email" placeholder="E-mail"
@@ -13,6 +17,7 @@
             <button type="submit" class="btn btn-info btn-block">Entrar</button>
             <br>
             <a>Esqueceu sua senha ?</a>
+            <br>
             <br>
             <br>
             

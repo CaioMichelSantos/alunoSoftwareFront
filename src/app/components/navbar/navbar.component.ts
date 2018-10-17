@@ -42,5 +42,8 @@ export class NavbarComponent implements OnInit {
   evaluations() {
     this.router.navigate(['/evaluations']);
   }
+  class(){
+    this.router.navigate(['/class']);
+  }
 
 }
