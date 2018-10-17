@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { style } from '@angular/animations';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @Component({
   selector: 'app-evaluations',
@@ -7,13 +7,31 @@ import { style } from '@angular/animations';
   styleUrls: ['./evaluations.component.scss']
 })
 export class EvaluationsComponent implements OnInit {
+  settings = {
+    columns: {
+      date: {
+        title: 'Data da avaliação'
+      },
+      teacher: {
+        title: 'Professor'
+      }
+    },
+    actions: false
+  };
 
-  constructor() { }
-
-  ngOnInit() {
+  data = [
+    {
+      date:'19/08/2018',
+      teacher: 'Paulão dacadimia'
+    }
+  ];
+  constructor() {
   }
 
-  Teste(){
-    console.log("testando");
+  ngOnInit(){
+  }
+
+  onRowHover(event){
+    //Ajuda aqui!
   }
 }

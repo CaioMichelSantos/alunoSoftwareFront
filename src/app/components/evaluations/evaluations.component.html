@@ -1,24 +1,10 @@
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-  <h3>Avaliações Fisicas</h3>
-  
-  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-    <table class="table table-striped table-bordered table-list">
-      <thead>        
-        <tr>
-          <th scope="col">Data da Avaliação</th>
-          <th scope="col">Avaliador</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>19/09/2018</td>
-          <td>Caio</td>
-        </tr>
-        <tr>
-          <td>19/09/2018</td>
-          <td>Danrley</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>    
+
+  <div class="page-header">
+    <h1><small>Avaliações Fisicas</small></h1>
+  </div>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <ng2-smart-table [settings]="settings" [source]="data" (rowHover)="onRowHover($event)"></ng2-smart-table>
+  </div>
 </div>
