@@ -26,6 +26,7 @@ import { ClassComponent } from './components/class/class.component'
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { EvaluationsComponent } from './components/evaluations/evaluations.component';
+import { FoodRegisterComponent } from './components/food-register/food-register.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { EvaluationsComponent } from './components/evaluations/evaluations.compo
     PagenotfoundComponent,
     EvaluationsComponent,
     ClassComponent,
+    FoodRegisterComponent,
   ],
   imports: [
     ToastrModule.forRoot({

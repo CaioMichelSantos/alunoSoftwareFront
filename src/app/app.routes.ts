@@ -6,17 +6,19 @@ import { ChatComponent } from './components/chat/chat.component';
 import { EvaluationsComponent } from './components/evaluations/evaluations.component';
 import { ClassComponent } from './components/class/class.component'
 import { AuthGuard } from "./guards/auth.guard"
+import { FoodRegisterComponent } from './components/food-register/food-register.component';
 
-const appRoutes: Routes  = [
-  { path:'notification', component: NotificationComponent, canActivate: [AuthGuard]},
-  { path:'chat', component: ChatComponent},
-  { path:'evaluations', component: EvaluationsComponent},
-  { path:'class', component: ClassComponent},
-  { path:'pageNotFound', component: PagenotfoundComponent},
-  { path:'login',  component: LoginComponent},
-  { path: '**', redirectTo: 'login'},
+const appRoutes: Routes = [
+  { path: 'notification', component: NotificationComponent, canActivate: [AuthGuard] },
+  { path: 'chat', component: ChatComponent },
+  { path: 'evaluations', component: EvaluationsComponent },
+  { path: 'food-register', component: FoodRegisterComponent },
+  { path: 'class', component: ClassComponent },
+  { path: 'pageNotFound', component: PagenotfoundComponent },
+  { path: 'login', component: LoginComponent },
+  { path: '**', redirectTo: 'login' },
 
-  
+
 ];
 
 export const routing = RouterModule.forRoot(appRoutes)

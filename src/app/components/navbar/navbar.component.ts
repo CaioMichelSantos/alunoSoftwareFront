@@ -42,6 +42,9 @@ export class NavbarComponent implements OnInit {
   evaluations() {
     this.router.navigate(['/evaluations']);
   }
+  foodRegister() {
+    this.router.navigate(['/food-register']);
+  }
   class(){
     this.router.navigate(['/class']);
   }

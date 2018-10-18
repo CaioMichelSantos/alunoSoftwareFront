@@ -1,0 +1,54 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-12">
+      <h3>Cadastro alimentação</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <label for="">Data</label>
+      <input type="date" [(ngModel)]="today" class="form-control">
+    </div>
+    <div class="col-12">
+      <label for="">Calorias</label>
+      <input type="text" class="form-control" disabled value="100 calorias">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <hr>
+    </div>
+  </div>
+  <div class="row" *ngFor="let food of foods">
+    <div class="col-12">
+      <label for="">Alimento</label>
+      <select class="form-control" name="" id="">
+        <option value="">Arroz</option>
+        <option value="">Feijão</option>
+        <option value="Carne"></option>
+      </select>
+    </div>
+    <div class="col-12">
+      <label for="">Tipo de medida</label>
+      <select name="" id="" class="form-control">
+        <option value="">Copo</option>
+        <option value="">Colher de sopa</option>
+        <option value="">Grama</option>
+      </select>
+    </div>
+    <div class="col-12">
+      <label for="">Valor total</label>
+      <input type="number" class="form-control">
+    </div>
+    <hr>
+  </div>
+  <div class="row">
+    <div class="col-12 text-right">
+      <button class="btn btn-info" (click)="addFood()"> Adicionar alimento </button> &nbsp;
+      <button class="btn btn-danger"> Cancelar </button> &nbsp;
+      <button class="btn btn-success"> Salvar </button>
+    </div>
+  </div>
+</div>
