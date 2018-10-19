@@ -7,11 +7,13 @@ import { EvaluationsComponent } from './components/evaluations/evaluations.compo
 import { ClassComponent } from './components/class/class.component'
 import { AuthGuard } from "./guards/auth.guard"
 import { FoodRegisterComponent } from './components/food-register/food-register.component';
+import { ProgressComponent } from './components/progress/progress.component';
 
 const appRoutes: Routes = [
   { path: 'notification', component: NotificationComponent, canActivate: [AuthGuard] },
   { path: 'chat', component: ChatComponent },
   { path: 'evaluations', component: EvaluationsComponent },
+  { path: 'progress', component: ProgressComponent },
   { path: 'food-register', component: FoodRegisterComponent },
   { path: 'class', component: ClassComponent },
   { path: 'pageNotFound', component: PagenotfoundComponent },
