@@ -27,7 +27,8 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { EvaluationsComponent } from './components/evaluations/evaluations.component';
 import { FoodRegisterComponent } from './components/food-register/food-register.component';
-import { ProgressComponent} from './components/progress/progress.component'
+import { ProgressComponent} from './components/progress/progress.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component'
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ProgressComponent} from './components/progress/progress.component'
     EvaluationsComponent,
     ClassComponent,
     FoodRegisterComponent,
-    ProgressComponent
+    ProgressComponent,
+    ResetPasswordComponent
   ],
   imports: [
     ToastrModule.forRoot({

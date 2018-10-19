@@ -62,5 +62,9 @@ export class LoginComponent implements OnInit {
             this.submitted = false;
         }
     }
+
+    resetPassword(){
+        this.router.navigate(['/reset-password']);
+    }
 }
 
