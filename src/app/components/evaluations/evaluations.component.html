@@ -1,10 +1,87 @@
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-
+<div>
   <div class="page-header">
     <h1><small>Avaliações Fisicas</small></h1>
   </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label>Buscar Ano</label>
+      <input type="number" placeholder="2018" class="form-control form-control-sm" />
+      <br>
+      <button (click)="openVisibleEvaluation()" class="form-control form-control-sm">Buscar Avaliações</button>
+    </div>
 
-  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-    <ng2-smart-table [settings]="settings" [source]="data" (rowHover)="onRowHover($event)"></ng2-smart-table>
+  </div>
+  <br>
+  <div *ngIf="visibleEvaluation && !visibleDetailEvaluation">
+    <label>Lista de Avaliação</label>
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table">
+          <tr>
+            <td>Data: 11/06/2018</td>
+            <td>Professor: Kleber</td>
+            <td><a (click)="openVisibleDetailEvaluation()">Abrir</a></td>
+          </tr>
+          <tr>
+            <td>Data: 11/08/2018</td>
+            <td>Professor: Kleber</td>
+            <td><a (click)="openVisibleDetailEvaluation()">Abrir</a></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div *ngIf="!visibleEvaluation && visibleDetailEvaluation">
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table">
+          <tr>
+            <td>Peso</td>
+            <td>95 Kg</td>
+          </tr>
+          <tr>
+            <td>Antebraço Esquerdo</td>
+            <td>8 cm</td>
+          </tr>
+          <tr>
+            <td>Antebraço Direito</td>
+            <td>8 cm</td>
+          </tr>
+          <tr>
+            <td>Bíceps Direito</td>
+            <td>36 cm</td>
+          </tr>
+          <tr>
+            <td>Coxa Direita</td>
+            <td>60 cm</td>
+          </tr>
+          <tr>
+            <td>Panturrilha Direita</td>
+            <td>28 cm</td>
+          </tr>
+          <tr>
+            <td>Panturrilha Esquerda</td>
+            <td>28 cm</td>
+          </tr>
+          <tr>
+            <td>Costas</td>
+            <td>60 cm</td>
+          </tr>
+          <tr>
+            <td>Quadril</td>
+            <td>130 cm</td>
+          </tr>
+          <tr>
+            <td>Glúteos</td>
+            <td>140 cm</td>
+          </tr>
+          <tr>
+            <td>Abdômen</td>
+            <td>15 cm</td>
+          </tr>
+        </table>
+      </div>
+    </div>
   </div>
 </div>

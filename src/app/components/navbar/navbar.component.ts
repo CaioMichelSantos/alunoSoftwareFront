@@ -48,5 +48,8 @@ export class NavbarComponent implements OnInit {
   class(){
     this.router.navigate(['/class']);
   }
+  progress(){
+    this.router.navigate(['/progress']);
+  }
 
 }

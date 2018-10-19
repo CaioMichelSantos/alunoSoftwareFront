@@ -20,7 +20,7 @@
         <li><a style="cursor:pointer;" (click)='class()'>Aulas</a></li>
         <li><a style="cursor:pointer;" (click)='evaluations()'>Avaliações fisicas</a></li>
         <li><a style="cursor:pointer;" (click)='foodRegister()'>Registro de alimentação</a></li>
-        <li><a style="cursor:pointer;">Relatório de evoluções</a></li>
+        <li><a style="cursor:pointer;" (click)='progress()'>Relatório de evoluções</a></li>
       </ul>
       <div class="btn-sair">
         <button type="button" *ngIf="islogin" style="cursor:pointer;" (click)="loginRedirect()" class="btn btn-danger">
