@@ -27,7 +27,7 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { EvaluationsComponent } from './components/evaluations/evaluations.component';
 import { FoodRegisterComponent } from './components/food-register/food-register.component';
-
+import { ProgressComponent} from './components/progress/progress.component'
 
 @NgModule({
   declarations: [
@@ -41,6 +41,7 @@ import { FoodRegisterComponent } from './components/food-register/food-register.
     EvaluationsComponent,
     ClassComponent,
     FoodRegisterComponent,
+    ProgressComponent
   ],
   imports: [
     ToastrModule.forRoot({
