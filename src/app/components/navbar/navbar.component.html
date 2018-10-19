@@ -16,11 +16,11 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav" *ngIf="islogin">
         <li><a style="cursor:pointer;" (click)='notification()'>Notificações</a></li>
-        <li><a style="cursor:pointer;" (click)='chat()'>Mensageiro</a></li>
+        <li><a style="cursor:pointer;" (click)='chat()'>Bate-papo</a></li>
         <li><a style="cursor:pointer;" (click)='class()'>Aulas</a></li>
         <li><a style="cursor:pointer;" (click)='evaluations()'>Avaliações fisicas</a></li>
         <li><a style="cursor:pointer;" (click)='foodRegister()'>Registro de alimentação</a></li>
-        <li><a style="cursor:pointer;">Relatorio de evoluções</a></li>
+        <li><a style="cursor:pointer;">Relatório de evoluções</a></li>
       </ul>
       <div class="btn-sair">
         <button type="button" *ngIf="islogin" style="cursor:pointer;" (click)="loginRedirect()" class="btn btn-danger">
@@ -33,3 +33,4 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+<br>
