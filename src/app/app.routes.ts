@@ -9,6 +9,7 @@ import { AuthGuard } from "./guards/auth.guard"
 import { FoodRegisterComponent } from './components/food-register/food-register.component';
 import { ProgressComponent } from './components/progress/progress.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { ResetPasswordConfirmComponent } from './components/reset-password-confirm/reset-password-confirm.component';
 
 const appRoutes: Routes = [
   { path: 'notification', component: NotificationComponent, canActivate: [AuthGuard] },
@@ -20,6 +21,7 @@ const appRoutes: Routes = [
   { path: 'pageNotFound', component: PagenotfoundComponent },
   { path: 'login', component: LoginComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
+  { path: 'reset-password-confirm', component: ResetPasswordConfirmComponent },
   { path: '**', redirectTo: 'login' },
 
 

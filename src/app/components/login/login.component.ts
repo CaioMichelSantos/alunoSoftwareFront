@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
 
     constructor(
         fb: FormBuilder,
-        private route: ActivatedRoute,
         private router: Router,
         private storageService: StorageService,
         private authenticationService: AuthenticationService,

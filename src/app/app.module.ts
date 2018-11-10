@@ -28,7 +28,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { EvaluationsComponent } from './components/evaluations/evaluations.component';
 import { FoodRegisterComponent } from './components/food-register/food-register.component';
 import { ProgressComponent} from './components/progress/progress.component';
-import { ResetPasswordComponent } from './components/reset-password/reset-password.component'
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { ResetPasswordConfirmComponent } from './components/reset-password-confirm/reset-password-confirm.component'
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
     ClassComponent,
     FoodRegisterComponent,
     ProgressComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    ResetPasswordConfirmComponent
   ],
   imports: [
     ToastrModule.forRoot({

@@ -9,7 +9,15 @@ export class AuthenticationService {
     constructor(private http: HttpClient, private storageService: StorageService) { }
 
     public login(data = {}) {
-        return this.http.post(`${environment.API_URL}/users/login`, data).toPromise()
+        return this.http.post(`${environment.API_URL}/users/login`, data).toPromise();
+    }
+
+    resetPassword(user = {}) {
+        return this.http.post(`${environment.API_URL}/users/reset-password`, user).toPromise();
+    }
+
+    resetPasswordConfirm(user = {}) {
+        return this.http.post(`${environment.API_URL}/users/reset-password-confirm`, user).toPromise();
     }
 
     logout() {
