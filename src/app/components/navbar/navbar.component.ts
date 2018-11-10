@@ -19,8 +19,9 @@ export class NavbarComponent implements OnInit {
     EventEmitterService.get('user-logged').subscribe(data => this.islogin = true);
   }
 
-  ngOnInit() {
-    if (localStorage.getItem('user')) {
+  ngOnInit() { 
+    const user = this.authenticationService.getLogged();
+    if (user) {
       this.islogin = true;
     }
   }
