@@ -16,12 +16,12 @@ export class EvaluationsComponent implements OnInit {
   ngOnInit() {
 
   }
-  
-  openVisibleEvaluation(){
+
+  openVisibleEvaluation() {
     this.visibleEvaluation = true
     this.visibleDetailEvaluation = false
   }
-  openVisibleDetailEvaluation(){
+  openVisibleDetailEvaluation() {
     this.visibleDetailEvaluation = true
     this.visibleEvaluation = false
   }
