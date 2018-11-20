@@ -1,31 +1,34 @@
 <div>
-  <div class="page-header">
+  <div class="">
     <h1><small>Avaliações Fisicas</small></h1>
   </div>
-  <div class="row">
+  <!-- <div class="row">
+    <div class="col-md-6">
+      <label for="">Escolha o mês</label>
+      <ng-select name="user" bindValue="value" notFoundText="Nenhum mês" [items]="months" placeholder="Selecione o mês"
+        bindLabel="key" [(ngModel)]="month">
+      </ng-select>
+    </div>
     <div class="col-md-6">
       <label>Buscar Ano</label>
-      <input type="number" placeholder="2018" class="form-control form-control-sm" />
+      <input type="number" [(ngModel)]="year" placeholder="2018" class="form-control form-control-sm" />
       <br>
-      <button (click)="openVisibleEvaluation()" class="form-control form-control-sm">Buscar Avaliações</button>
+    </div>
+    <div class="col-md-12">
+      <button [disabled]="!year || !month" (click)="openVisibleEvaluation()" class="form-control form-control-sm">Buscar
+        Avaliações</button>
     </div>
 
-  </div>
-  <br>
+  </div> -->
+  <!-- <br> -->
   <div *ngIf="visibleEvaluation && !visibleDetailEvaluation">
-    <label>Lista de Avaliação</label>
     <div class="row">
       <div class="col-md-6">
         <table class="table">
-          <tr>
-            <td>Data: 11/06/2018</td>
-            <td>Avaliador: Kleber</td>
-            <td><a (click)="openVisibleDetailEvaluation()">Abrir</a></td>
-          </tr>
-          <tr>
-            <td>Data: 11/08/2018</td>
-            <td>Avaliador: Kleber</td>
-            <td><a (click)="openVisibleDetailEvaluation()">Abrir</a></td>
+          <tr *ngFor="let evaluation of evaluations">
+            <td>Data: {{evaluation?.createdAt | date: 'dd/MM/yyyy'}}</td>
+            <td>Avaliador: {{evaluation?.appraiser}}</td>
+            <td><a class="link" (click)="openVisibleDetailEvaluation(evaluation)">Abrir</a></td>
           </tr>
         </table>
       </div>
@@ -34,51 +37,56 @@
   <br>
   <div *ngIf="!visibleEvaluation && visibleDetailEvaluation">
     <div class="row">
+      <div class="col-md-6 text-right">
+        <a (click)="openVisibleEvaluation()" class="link">Voltar</a>
+      </div>
+    </div>
+    <div class="row">
       <div class="col-md-6">
         <table class="table">
           <tr>
             <td>Peso</td>
-            <td>95 Kg</td>
+            <td>{{evaluationSelected?.weight}} kg</td>
           </tr>
           <tr>
             <td>Antebraço Esquerdo</td>
-            <td>8 cm</td>
+            <td>{{evaluationSelected.leftForearm}} cm</td>
           </tr>
           <tr>
             <td>Antebraço Direito</td>
-            <td>8 cm</td>
+            <td>{{evaluationSelected.rightForearm}} cm</td>
           </tr>
           <tr>
             <td>Bíceps Direito</td>
-            <td>36 cm</td>
+            <td>{{evaluationSelected.bicepsRight}} cm</td>
           </tr>
           <tr>
             <td>Coxa Direita</td>
-            <td>60 cm</td>
+            <td>{{evaluationSelected.rightThigh}} cm</td>
           </tr>
           <tr>
             <td>Panturrilha Direita</td>
-            <td>28 cm</td>
+            <td>{{evaluationSelected.rightCalf}} cm</td>
           </tr>
           <tr>
             <td>Panturrilha Esquerda</td>
-            <td>28 cm</td>
+            <td>{{evaluationSelected.leftCalf}} cm</td>
           </tr>
           <tr>
             <td>Costas</td>
-            <td>60 cm</td>
+            <td>{{evaluationSelected.back}} cm</td>
           </tr>
           <tr>
             <td>Quadril</td>
-            <td>130 cm</td>
+            <td>{{evaluationSelected.hip}} cm</td>
           </tr>
           <tr>
             <td>Glúteos</td>
-            <td>140 cm</td>
+            <td>{{evaluationSelected.buttocks}} cm</td>
           </tr>
           <tr>
             <td>Abdômen</td>
-            <td>15 cm</td>
+            <td>{{evaluationSelected.abdomen}} cm</td>
           </tr>
         </table>
       </div>
