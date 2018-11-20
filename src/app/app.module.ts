@@ -32,12 +32,15 @@ import { ResetPasswordConfirmComponent } from './components/reset-password-confi
 import { FoodService } from './services/food.service';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { NgDatepickerModule } from 'ng2-datepicker';
+import { NotificationService } from './services/notification.service';
+import { FilterListPipe } from './pipes/filterList.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     FooterComponent,
+    FilterListPipe,
     NotificationComponent,
     OpenNotificationComponent,
     ChatComponent,
@@ -72,7 +75,8 @@ import { NgDatepickerModule } from 'ng2-datepicker';
     AuthenticationService,
     StorageService,
     HttpClientService,
-    FoodService
+    FoodService,
+    NotificationService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,55 +1,29 @@
 <div class="page-header">
     <h1><small>Notificação</small></h1>
-  </div>
+</div>
 <div *ngIf="!renderizeNotification">
     <div class="row">
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <img src="../../../assets/imgs/imgcapa.jpg" alt="...">
-                <div class="caption">
-                    <h3>Aulas de Sábado</h3>
-                    <p>Novas Aulas chegando...</p>
-                    <p><a class="btn btn-primary" (click)="openNotification(1)" role="button">Abrir</a> <a class="btn btn-default"
-                            role="button">Marcar como lida</a></p>
-                </div>
-            </div>
+        <div class="col-md-12">
+            <input type="text" placeholder="Digite o título..." class="form-control" [(ngModel)]="filterNotification">
         </div>
-        <div class="col-sm-6 col-md-4">
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-sm-6 col-md-4" *ngFor="let notification of notifications | filterList: filterNotification : 'title'">
             <div class="thumbnail">
-                <img src="../../../assets/imgs/imgcapa.jpg" alt="...">
+                <img *ngIf="notification.img" [src]="notification.img" alt="...">
                 <div class="caption">
-                    <h3>Limpezas do banheiro</h3>
-                    <p>Ajude na Limpeza</p>
-                    <p><a class="btn btn-primary" role="button">Abrir</a> <a class="btn btn-default" role="button">Marcar
-                            como lida</a></p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <img src="../../../assets/imgs/imgcapa.jpg" alt="...">
-                <div class="caption">
-                    <h3>Adiciona o pessoal no facebook</h3>
-                    <p>Vamos todos nos conectar galera...</p>
-                    <p><a class="btn btn-primary" role="button">Abrir</a> <a class="btn btn-default" role="button">Marcar
-                            como lida</a></p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <img src="../../../assets/imgs/imgcapa.jpg" alt="...">
-                <div class="caption">
-                    <h3>Novo professor na area</h3>
-                    <p>Um novo professor focado em body para voces...</p>
-                    <p><a class="btn btn-primary" role="button">Abrir</a> <a class="btn btn-default" role="button">Marcar
-                            como lida</a></p>
+                    <h3>{{notification.title}}</h3>
+                    <p>{{notification.subtitle}}</p>
+                    <p>
+                        <a class="btn btn-primary" (click)="openNotification(notification)" role="button">Abrir</a>
+                        <!-- <a class="btn btn-default" role="button">Marcar como lida</a></p> -->
                 </div>
             </div>
         </div>
     </div>
 </div>
 <div *ngIf="renderizeNotification">
-    <app-open-notification></app-open-notification>
+    <app-open-notification [notification]="selectedNotification"></app-open-notification>
     <button class="btn btn-primary pull-right" (click)="backNotification()">Voltar</button>
 </div>

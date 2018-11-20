@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-open-notification',
@@ -6,12 +6,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OpenNotificationComponent implements OnInit {
   id = 'qDuKsiwS5xw';
+
+  @Input() notification: any = {};
+
   private player;
   private ytEvent;
 
 
   constructor() {
-  
+
   }
   onStateChange(event) {
     this.ytEvent = event.data;
@@ -19,11 +22,11 @@ export class OpenNotificationComponent implements OnInit {
   savePlayer(player) {
     this.player = player;
   }
-  
+
   playVideo() {
     this.player.playVideo();
   }
-  
+
   pauseVideo() {
     this.player.pauseVideo();
   }
