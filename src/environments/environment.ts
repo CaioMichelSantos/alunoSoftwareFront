@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   URL_BASE : "www.google.com.br",
-  API_URL: 'http://localhost:3000/v1'
+  API_URL: 'http://localhost:3000/v1',
+  TACO_URL: 'http://taco-food-api.herokuapp.com/api/v1'
 };
 
 

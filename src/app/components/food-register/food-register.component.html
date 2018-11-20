@@ -1,15 +1,16 @@
 <div class="page-header">
-  <h1><small>Diario de alimentação</small></h1>
+  <h1><small>Diário de alimentação</small></h1>
 </div>
 <div class="container">
   <div class="row">
     <div class="col-12">
       <label for="">Data</label>
-      <input type="date" [(ngModel)]="today" class="form-control">
+      <ng-datepicker disabled="false" [options]="options" (ngModelChange)="updateDate($event)" [ngModel]="dailyFoodsUser.date">
+      </ng-datepicker>
     </div>
     <div class="col-12">
       <label for="">Calorias</label>
-      <input type="text" class="form-control" disabled value="100 calorias">
+      <input type="text" class="form-control" disabled value="{{calories()}}">
     </div>
   </div>
   <div class="row">
@@ -17,31 +18,29 @@
       <hr>
     </div>
   </div>
-  <ng-container *ngFor="let food of foods">
+  <ng-container *ngFor="let foodUser of dailyFoodsUser.foods; let i = index;">
     <div class="row">
       <div class="col-12">
         <label for="">Alimento consumido</label>
-        <select class="form-control" name="" id="">
-          <option value="">Arroz</option>
-          <option value="">Feijão</option>
-          <option value="Carne"></option>
-        </select>
+        <ng-select bindValue="id" placeholder="Selecione um alimento" [(ngModel)]="foodUser.food" (change)="changeFood($event, i)"
+          [items]="foods" maxSelectedItems="20" [virtualScroll]="true" bindLabel="description" notFoundText="Nenhum item encontrado"></ng-select>
       </div>
     </div>
     <div class="row">
       <div class="row">
         <div class="col-md-6 col-xs-6">
-          <label for="">Tipo de medida</label>
-          <select name="" id="" class="form-control">
-            <option value="">Copo</option>
-            <option value="">Colher de sopa</option>
-            <option value="">Grama</option>
-          </select>
+          <label for="">Tipo de medida </label>
+          <input type="text" disabled class="form-control" [(ngModel)]="foodUser.unit">
         </div>
         <div class="col-md-6 col-xs-6">
           <label for="">Valor total</label>
-          <input type="number" class="form-control">
+          <input type="number" [disabled]="!foodUser.food" class="form-control" [(ngModel)]="foodUser.calories">
         </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="i !== 0">
+      <div class="col-12 text-right">
+        <a (click)="remove(i)">Remover</a>
       </div>
     </div>
   </ng-container>
@@ -51,7 +50,7 @@
     <div class="col-12 text-center">
       <button class="btn btn-info" (click)="addFood()"> Adicionar alimento </button> &nbsp;
       <button class="btn btn-danger"> Cancelar </button> &nbsp;
-      <button class="btn btn-success"> Salvar </button>
+      <button class="btn btn-success" (click)="save()"> Salvar </button>
     </div>
   </div>
 </div>

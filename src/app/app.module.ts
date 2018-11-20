@@ -23,13 +23,15 @@ import { StorageService } from './services/storage.service';
 import { HttpClientService } from './services/http-client.service';
 import { YoutubePlayerModule } from 'ng2-youtube-player';
 import { ClassComponent } from './components/class/class.component'
-import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { EvaluationsComponent } from './components/evaluations/evaluations.component';
 import { FoodRegisterComponent } from './components/food-register/food-register.component';
 import { ProgressComponent} from './components/progress/progress.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { ResetPasswordConfirmComponent } from './components/reset-password-confirm/reset-password-confirm.component'
+import { FoodService } from './services/food.service';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { NgDatepickerModule } from 'ng2-datepicker';
 
 @NgModule({
   declarations: [
@@ -58,9 +60,10 @@ import { ResetPasswordConfirmComponent } from './components/reset-password-confi
     ReactiveFormsModule,
     HttpClientModule,
     routing,
-    Ng2SmartTableModule,
     BrowserAnimationsModule,
     YoutubePlayerModule,
+    NgSelectModule,
+    NgDatepickerModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
@@ -68,7 +71,8 @@ import { ResetPasswordConfirmComponent } from './components/reset-password-confi
     EventEmitterService,
     AuthenticationService,
     StorageService,
-    HttpClientService
+    HttpClientService,
+    FoodService
   ],
   bootstrap: [AppComponent]
 })

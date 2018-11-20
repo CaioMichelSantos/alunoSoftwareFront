@@ -26,7 +26,6 @@ export class AuthenticationService {
     }
 
     getLogged() {
-        let logged = JSON.parse(this.storageService.get('user'));
-        return logged;
+        return this.storageService.get('user');
     }
 }
