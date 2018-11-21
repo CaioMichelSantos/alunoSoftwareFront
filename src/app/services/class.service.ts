@@ -15,13 +15,9 @@ export class ClassService {
     private httpClientService: HttpClientService
   ) { }
 
-  create(content): any {
+  get(): any {
     const user = this.authenticationService.getLogged();
-    return this.httpClientService.post(this.url, content);
-  }
-
-  get(params = {}): any {
-    const url = this.httpClientService.getUrl(`${this.url}`, params);
+    const url = `${this.url}?user=${user._id}`;
     return this.httpClientService.get(url);
   }
 
@@ -30,10 +26,13 @@ export class ClassService {
     return this.httpClientService.get(url);
   }
 
-  update(content): any {
-    return this.httpClientService.put(`${this.url}/${content._id}`, content);
+  confirmPresence(classRoom) {
+    const user = this.authenticationService.getLogged();
+    let url = `${this.url}/${classRoom._id}/presence/${user._id}`;
+    if (!classRoom.userConfirmed) {
+      url = `${url}?add=true`;
+    }
+    return this.httpClientService.put(url);
   }
 
-  delete(contentId): any {
-    return this.httpClientService.delete(`${this.url}/${contentId}`);
-  }
+}

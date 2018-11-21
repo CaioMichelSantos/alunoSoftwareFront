@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ClassService } from 'src/app/services/class.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-class',
@@ -10,7 +11,10 @@ export class ClassComponent implements OnInit {
   newAulaControl: boolean
   classRooms: any = [];
 
-  constructor(private classService: ClassService) { }
+  constructor(
+    private toastrService: ToastrService,
+    private classService: ClassService
+  ) { }
 
   ngOnInit() {
     this.loadClass();
@@ -20,7 +24,6 @@ export class ClassComponent implements OnInit {
     try {
       this.classRooms = (await this.classService.get())['classRooms'];
     } catch (err) {
-      console.log(err);
     }
   }
 
@@ -31,4 +34,15 @@ export class ClassComponent implements OnInit {
     this.newAulaControl = false
   }
 
+  async confirmPresence(classRoom) {
+    try {
+      await this.classService.confirmPresence(classRoom);
+      classRoom.userConfirmed = !classRoom.userConfirmed;
+    } catch (errorRequest) {
+      if (errorRequest && errorRequest.error && errorRequest.error.error) {
+        return this.toastrService.error(errorRequest.error.error);
+      }
+      this.toastrService.error('Por favor tente mais tarde');
+    }
+  }
 }
