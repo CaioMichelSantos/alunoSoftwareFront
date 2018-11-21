@@ -3,8 +3,8 @@
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-12">
-      <label for="">Data</label>
+    <div class="col-12" style="z-index: 99999;">
+      <label for="">Data</label> 
       <ng-datepicker disabled="false" [options]="options" (ngModelChange)="updateDate($event)" [ngModel]="dailyFoodsUser.date">
       </ng-datepicker>
     </div>

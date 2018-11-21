@@ -15,9 +15,15 @@ export class ClassService {
     private httpClientService: HttpClientService
   ) { }
 
-  get(): any {
+  get(onlySchedule: any = '', date: any = ''): any {
     const user = this.authenticationService.getLogged();
-    const url = `${this.url}?user=${user._id}`;
+    let url = `${this.url}?user=${user._id}`;
+    if (onlySchedule) {
+      url += `&schedule=true`;
+    }
+    if (date) {
+      url += `&date=${date}`;
+    }
     return this.httpClientService.get(url);
   }
 

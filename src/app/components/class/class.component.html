@@ -3,37 +3,22 @@
 </div>
 <div class="container">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6" style="z-index: 99999;">
             <label>Buscar dia</label>
-            <input type="date" placeholder="ex: 12/12/2018" class="form-control form-control-sm" />
-        </div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col-md-3">
-            <button (click)="oldClass()" *ngIf="!newAulaControl" align="center" class="form-control form-control-sm">Nova
-                aula</button>
-        </div>
-        <div class="col-md-3">
-            <button (click)="newClass()" *ngIf="newAulaControl" align="center" class="form-control form-control-sm">Aula
-                Antiga</button>
+            <ng-datepicker disabled="false" [options]="options" (ngModelChange)="updateDate($event)" [ngModel]="filterDate">
+            </ng-datepicker>
         </div>
     </div>
     <br>
     <div class="row" *ngIf="!newAulaControl">
-        <!-- Por default o dia escolhido é o atual. -->
         <div class="col-md-6">
             <div class="row-fluid">
-                <label>Aula realizada ou agendada ?</label><br>
-                <input type="radio">Agendada<br>
-                <input type="radio">Realizada
+                <label>Aulas</label><br>
+                <input type="radio" (click)="onlySchedule = false; loadClass()" [checked]="!onlySchedule">Todas<br>
+                <input type="radio" (click)="onlySchedule = true; loadClass()" [checked]="onlySchedule">Agendadas
             </div>
         </div>
     </div>
-    <!-- Lista que se adapta a consulta de aula realizada -->
-    <!-- Caso seja aula antiga não se pode editar
-    Caso seja aula agendada se pode editar
-    Caso seja nova aula pode se inscrever -->
     <div class="row">
         <div class="col-md-4" *ngFor="let currentClass of classRooms">
             <div style="padding-left: 10px;padding-right: 10px" class="jumbotron">
@@ -53,6 +38,12 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <br>
+    <div class="row" *ngIf="!classRooms || classRooms.length === 0">
+        <div class="col-md-12">
+            <h4> Nenhuma aula com os filtros selecionados!</h4>
         </div>
     </div>
 </div>

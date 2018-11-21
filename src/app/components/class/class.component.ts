@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ClassService } from 'src/app/services/class.service';
 import { ToastrService } from 'ngx-toastr';
+import { DatepickerOptions } from 'ng2-datepicker';
+import * as ptLocale from 'date-fns/locale/pt';
 
 @Component({
   selector: 'app-class',
@@ -10,6 +12,16 @@ import { ToastrService } from 'ngx-toastr';
 export class ClassComponent implements OnInit {
   newAulaControl: boolean
   classRooms: any = [];
+  onlySchedule: Boolean = false;
+  filterDate: any = new Date();
+
+  options: DatepickerOptions = {
+    displayFormat: 'DD/MM/YYYY',
+    dayNamesFormat: 'dd',
+    locale: ptLocale,
+    firstCalendarDay: 0, // 0 - Sunday, 1 - Monday
+    // addClass: 'form-control input-date', // Optional, value to pass on to [ngClass] on the input field
+  };;
 
   constructor(
     private toastrService: ToastrService,
@@ -22,7 +34,7 @@ export class ClassComponent implements OnInit {
 
   async loadClass() {
     try {
-      this.classRooms = (await this.classService.get())['classRooms'];
+      this.classRooms = (await this.classService.get(this.onlySchedule, this.filterDate))['classRooms'];
     } catch (err) {
     }
   }
@@ -44,5 +56,10 @@ export class ClassComponent implements OnInit {
       }
       this.toastrService.error('Por favor tente mais tarde');
     }
+  }
+
+  async updateDate(event) {
+    this.filterDate = event;
+    this.loadClass();
   }
 }
