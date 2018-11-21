@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ClassService } from 'src/app/services/class.service';
 
 @Component({
   selector: 'app-class',
@@ -7,11 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClassComponent implements OnInit {
   newAulaControl: boolean
+  classRooms: any = [];
 
-  constructor() { }
+  constructor(private classService: ClassService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.loadClass();
+  }
 
+  async loadClass() {
+    try {
+      this.classRooms = (await this.classService.get())['classRooms'];
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   oldClass() {
     this.newAulaControl = true
