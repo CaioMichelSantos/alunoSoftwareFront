@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
             EventEmitterService.get('user-logged').emit('');
             this.router.navigate(['/notification']);
         } catch (err) {
-            this.toastr.error('Ooops', 'Não foi possível realizar o login');
+            this.toastr.error('Não foi possível realizar o login', 'Ooops');
         } finally {
             this.submitted = false;
         }

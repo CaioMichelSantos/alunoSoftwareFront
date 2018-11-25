@@ -21,6 +21,11 @@
 
   </div> -->
   <!-- <br> -->
+  <div class="row" *ngIf="!evaluations || evaluations?.length === 0">
+    <div class="col-md-12">
+      <h5>Nenhuma avaliação encontrada!</h5>
+    </div>
+  </div>
   <div *ngIf="visibleEvaluation && !visibleDetailEvaluation">
     <div class="row">
       <div class="col-md-6">

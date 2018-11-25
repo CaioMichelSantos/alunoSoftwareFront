@@ -17,9 +17,9 @@
     width: 100% !important;
 }
 
-.ngx-datepicker-calendar-container {
+:host /deep/ .ngx-datepicker-calendar-container {
     z-index: 999 !important;
-    .ngx-datepicker-position-bottom-right {
+    :host /deep/ .ngx-datepicker-position-bottom-right {
         z-index: 999 !important;
     }
 }

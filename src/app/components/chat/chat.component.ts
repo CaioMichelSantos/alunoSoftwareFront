@@ -10,6 +10,7 @@ import { empty } from 'rxjs';
     styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent implements OnInit {
+    filterUser: any = '';
     users: any = [];
     chatActive: string = "";
     isChatActive: boolean = false;
@@ -33,7 +34,7 @@ export class ChatComponent implements OnInit {
         let firstUser = this.users[0]['_id'];
         console.log(firstUser);
         await this.showMessages(firstUser);
-        
+
     }
 
     async getUsers() {
@@ -59,21 +60,21 @@ export class ChatComponent implements OnInit {
 
     async getFromChat() {
         let fromId = (await this.authenticationService.getLogged())['_id'];
-        try {            
+        try {
             this.chatFromId = (await ((await this.chatService.getChat(fromId, this.activeId))['contents']).pop())['_id'];
-        } catch(err){
+        } catch (err) {
             await this.chatService.createChat(fromId, this.activeId);
             let chat = await this.chatService.getChat(this.activeId, fromId);
             let contents = await chat['contents'];
         }
-        
+
     }
 
     async getToChat() {
         try {
             let fromId = (await this.authenticationService.getLogged())['_id'];
-            this.chatToId = (await((await this.chatService.getChat(this.activeId, fromId))['contents']).pop())['_id'];
-        } catch(err){
+            this.chatToId = (await ((await this.chatService.getChat(this.activeId, fromId))['contents']).pop())['_id'];
+        } catch (err) {
             console.log(err);
         }
         return this.chatToId;
@@ -89,7 +90,7 @@ export class ChatComponent implements OnInit {
             let chat = await this.chatService.getChat(this.activeId, fromId);
             let contents = await chat['contents'];
         }
-        
+
         contents.forEach(chatContent => {
             var id = chatContent['_id'];
             this.chatService.sendMessage(id, this.message);
@@ -98,9 +99,9 @@ export class ChatComponent implements OnInit {
     }
 
     async getMessages() {
-        
+
         this.toMessages = (await this.chatService.getMessagesByChat(this.chatToId))['contents'];
         this.fromMessages = (await this.chatService.getMessagesByChat(this.chatFromId))['contents'];
-        this.messages = {sended: this.toMessages.sort(), recieved: this.fromMessages.sort()};    
+        this.messages = { sended: this.toMessages.sort(), recieved: this.fromMessages.sort() };
     }
 }
