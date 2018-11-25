@@ -16,13 +16,11 @@ export class ChatService {
   }
 
   getChat(toId, fromId) {
-    console.log(`${environment.API_URL}/chat?fromId=${fromId}&toId=${toId}`);
     return this.httpClientService.get(`${environment.API_URL}/chat?fromId=${fromId}&toId=${toId}`);
   }
 
   sendMessage(chatId, message) {    
     let data = {chatId: chatId, message: message};
-    console.log(data);
     return this.httpClientService.post(`${environment.API_URL}/messages`, data);
   }
 
@@ -32,7 +30,6 @@ export class ChatService {
   }
 
   getMessagesByChat(chatId) {
-    console.log(`${environment.API_URL}/messages/${chatId}`);
     return this.httpClientService.get(`${environment.API_URL}/messages/${chatId}`);
   }
 

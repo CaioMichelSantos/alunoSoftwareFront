@@ -17,16 +17,23 @@ export class ChatComponent implements OnInit {
     chatToId: string;
     chatFromId: string;
     message: string;
-    toMessages: Object;
-    fromMessages: Object;
+    toMessages: Array<number>;
+    fromMessages: Array<number>;
+    sended: Array<Text>;
+    recieved: Array<Text>;
+    messages: Object;
 
     constructor(
         private chatService: ChatService,
         private authenticationService: AuthenticationService
     ) { }
 
-    ngOnInit() {
-        this.getUsers();
+    async ngOnInit() {
+        await this.getUsers();
+        let firstUser = this.users[0]['_id'];
+        console.log(firstUser);
+        await this.showMessages(firstUser);
+        
     }
 
     async getUsers() {
@@ -41,7 +48,7 @@ export class ChatComponent implements OnInit {
         await this.activeChat(toId);
         await this.getToChat();
         await this.getFromChat();
-        await this.getMessages();
+        this.getMessages();
     }
 
     async activeChat(toId) {
@@ -54,7 +61,6 @@ export class ChatComponent implements OnInit {
         let fromId = (await this.authenticationService.getLogged())['_id'];
         try {            
             this.chatFromId = (await ((await this.chatService.getChat(fromId, this.activeId))['contents']).pop())['_id'];
-            console.log(this.chatFromId);
         } catch(err){
             await this.chatService.createChat(fromId, this.activeId);
             let chat = await this.chatService.getChat(this.activeId, fromId);
@@ -78,7 +84,6 @@ export class ChatComponent implements OnInit {
         let fromId = (await this.authenticationService.getLogged())['_id'];
         let chat = await this.chatService.getChat(this.activeId, fromId);
         let contents = chat['contents'];
-        console.log(contents);
         if (isUndefined(chat) || contents.length == 0) {
             await this.chatService.createChat(this.activeId, fromId);
             let chat = await this.chatService.getChat(this.activeId, fromId);
@@ -87,19 +92,15 @@ export class ChatComponent implements OnInit {
         
         contents.forEach(chatContent => {
             var id = chatContent['_id'];
-            console.log(id);
             this.chatService.sendMessage(id, this.message);
         });
 
     }
 
     async getMessages() {
-        console.log(this.chatToId);
-        this.toMessages = await this.chatService.getMessagesByChat(this.chatToId);
-        this.fromMessages = await this.chatService.getMessagesByChat(this.chatFromId);
-        console.log(this.toMessages);
-        console.log(this.fromMessages);
+        
+        this.toMessages = (await this.chatService.getMessagesByChat(this.chatToId))['contents'];
+        this.fromMessages = (await this.chatService.getMessagesByChat(this.chatFromId))['contents'];
+        this.messages = {sended: this.toMessages.sort(), recieved: this.fromMessages.sort()};    
     }
-
-
 }
