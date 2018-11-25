@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChatService } from 'src/app/services/chat.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
-import { isUndefined } from 'util';
-import { empty } from 'rxjs';
 
 @Component({
     selector: 'app-chat',
