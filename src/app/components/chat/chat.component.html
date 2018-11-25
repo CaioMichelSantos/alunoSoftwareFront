@@ -1,7 +1,6 @@
 <div class="page-header">
   <h1><small>Bate-papo</small></h1>
 </div>
-<!-- <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css'> -->
 <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css'>
 <div class="messaging">
   <div class="inbox_msg">
@@ -30,28 +29,20 @@
     </div>
     <div class="mesgs">
       <div class="msg_history">
-        <div class="incoming_msg">
-          <div class="incoming_msg_img"> <img src="https://banner2.kisspng.com/20180522/rve/kisspng-computer-icons-avatar-sport-5b03b4dbd67f95.9985958015269695638786.jpg"
-              alt="sunil"> </div>
-          <div class="received_msg" *ngFor="let message of fromMessages">
-            <div class="received_withd_msg">
-              <p>{{ message.message }}</p>
-              <span class="time_date"> {{ message.createdAt | date: 'dd/MM/yyyy HH:mm' }}</span>
+        <ng-container *ngFor="let currentMessage of messages; let i = index">
+          <div [ngClass]="{'incoming_msg': currentMessage.incoming_msg, 'outgoing_msg': currentMessage.outgoing_msg}">
+            <div [ngClass]="{'received_withd_msg': currentMessage.incoming_msg, 'sent_msg': currentMessage.outgoing_msg}"
+              class="">
+              <p  [id]="i + '-message'">{{ currentMessage.message }}</p>
+              <span class="time_date"> {{ currentMessage.createdAt | date: 'dd/MM/yyyy HH:mm' }}</span>
             </div>
           </div>
-        </div>
-        <div class="outgoing_msg" *ngFor="let message of toMessages">
-          <div class="sent_msg">
-            <p>{{ message.message }}</p>
-            <span class="time_date"> {{ message.createdAt | date: 'dd/MM/yyyy HH:mm' }}</span>
-          </div>
-        </div>
+        </ng-container>
       </div>
       <div class="type_msg">
         <div class="input_msg_write">
           <input type="text" class="write_msg" placeholder="Escreva uma mensagem..." [(ngModel)]="message" />
-          <button class="msg_send_btn" type="button" (click)="sendMessage(write_msg)"><i class="fa fa-paper-plane-o"
-              aria-hidden="true"></i></button>
+          <button class="msg_send_btn" type="button" (click)="sendMessage()"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
         </div>
       </div>
     </div>
