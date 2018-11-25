@@ -113,6 +113,7 @@ export class ChatComponent implements OnInit {
             return currentMessage;
         });
         this.messages = [...this.fromMessages, ...this.toMessages].sort((a: any, b: any) => a.createdAt - b.createdAt);
-        setTimeout(() => document.getElementById(`${this.messages.length - 1}-message`).scrollIntoView(), 1000);
+        setTimeout(() => document.getElementById(`${this.messages.length - 1}-message`)
+            .scrollIntoView({ behavior: 'smooth', block: 'center' }), 500);
     }
 }
