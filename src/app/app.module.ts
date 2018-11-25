@@ -34,6 +34,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { NgDatepickerModule } from 'ng2-datepicker';
 import { NotificationService } from './services/notification.service';
 import { FilterListPipe } from './pipes/filterList.pipe';
+import { ChatService } from './services/chat.service';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { FilterListPipe } from './pipes/filterList.pipe';
     StorageService,
     HttpClientService,
     FoodService,
-    NotificationService
+    NotificationService,
+    ChatService
   ],
   bootstrap: [AppComponent]
 })
