@@ -1,67 +1,49 @@
 <div class="page-header">
     <h1><small>Gerenciamento de aulas</small></h1>
-  </div>
+</div>
 <div class="container">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6" style="z-index: 99999;">
             <label>Buscar dia</label>
-            <input type="date" placeholder="ex: 12/12/2018" class="form-control form-control-sm" />
-        </div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col-md-3">
-            <button (click)="oldClass()" *ngIf="!newAulaControl" align="center" class="form-control form-control-sm">Nova
-                aula</button>
-        </div>
-        <div class="col-md-3">
-            <button (click)="newClass()" *ngIf="newAulaControl" align="center" class="form-control form-control-sm">Aula
-                Antiga</button>
+            <ng-datepicker disabled="false" [options]="options" (ngModelChange)="updateDate($event)" [ngModel]="filterDate">
+            </ng-datepicker>
         </div>
     </div>
     <br>
     <div class="row" *ngIf="!newAulaControl">
-        <!-- Por default o dia escolhido é o atual. -->
         <div class="col-md-6">
             <div class="row-fluid">
-                <label>Aula realizada ou agendada ?</label><br>
-                <input type="radio">Agendada<br>
-                <input type="radio">Realizada
+                <label>Aulas</label><br>
+                <input type="radio" (click)="onlySchedule = false; loadClass()" [checked]="!onlySchedule">Todas<br>
+                <input type="radio" (click)="onlySchedule = true; loadClass()" [checked]="onlySchedule">Agendadas
             </div>
         </div>
     </div>
-    <!-- Lista que se adapta a consulta de aula realizada -->
-    <!-- Caso seja aula antiga não se pode editar
-    Caso seja aula agendada se pode editar
-    Caso seja nova aula pode se inscrever -->
     <div class="row">
-        <div class="col-md-4">
-            <div style="padding-left: 0;padding-right: 0" class="jumbotron">
-                <h3>Body Jump</h3>
-                <p>Duração: 40 minutos</p>
-                <p>Data: 29/12/12 18:00</p>
-                <p>Essa aula tem como principio os fundamentos de pulo na cama elastica.</p>
-                <p>Professor: Santos</p>
-                <p><a class="btn btn-primary btn-lg" role="button">
-                        Inscrever
-                    </a></p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div style="padding-left: 0;padding-right: 0" class="jumbotron">
-                <h3>Body Jump</h3>
-                <p>Duração: 40 minutos</p>
-                <p>Data: 29/12/12 12:20</p>
-                <p>Essa aula tem como principio os fundamentos de pulo na cama elastica.</p>
-                <p>Professor: Igor</p>
-                <p><a class="btn btn-primary btn-lg" role="button">
-                        Desistir
-                    </a></p>
+        <div class="col-md-4" *ngFor="let currentClass of classRooms">
+            <div style="padding-left: 10px;padding-right: 10px" class="jumbotron">
+                <h3>{{currentClass.title}}</h3>
+                <hr>
+                <h5>{{currentClass.dateAndHour}}</h5>
+                <h5>Tipo: {{currentClass.type}}</h5>
+                <h5>{{currentClass.description}}</h5>
+                <h5>Professor: {{currentClass.teacherName}}</h5>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h5>
+                            <a class="btn btn-primary btn-lg" (click)="confirmPresence(currentClass)" role="button">
+                                {{ currentClass.userConfirmed ? 'Cancelar participação' :'Confirmar presença'}}
+                            </a>
+                        </h5>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div>
+    <br>
+    <div class="row" *ngIf="!classRooms || classRooms.length === 0">
+        <div class="col-md-12">
+            <h4> Nenhuma aula com os filtros selecionados!</h4>
+        </div>
     </div>
 </div>
-<br>
-<br>
