@@ -14,7 +14,7 @@ export class OpenNotificationComponent implements OnInit {
 
 
   constructor() {
-
+    
   }
   onStateChange(event) {
     this.ytEvent = event.data;
